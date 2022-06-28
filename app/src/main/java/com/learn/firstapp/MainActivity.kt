@@ -1,9 +1,11 @@
 package com.learn.firstapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
@@ -13,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         //todo this is how we get reference of views that exist on xml layout file
         val btn = findViewById<Button>(R.id.click);
@@ -35,6 +36,15 @@ class MainActivity : AppCompatActivity() {
             clickPerform(textView)
             true
         }
+
+        /*----------- Second Chapter Coding -----------*/
+        val change=findViewById<Button>(R.id.change)
+
+        change.setOnClickListener{
+            val transferInte=Intent(this,SecondActivity::class.java)
+            startActivity(transferInte)
+        }
+
     }
 
     //todo creatingFunction
@@ -45,6 +55,5 @@ class MainActivity : AppCompatActivity() {
         ).show()
         textView.text="Yes Long Clicked!!";
     }
-
 
 }
