@@ -23,20 +23,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Click ME!"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-      <Button
+    <EditText
+        android:id="@+id/sendtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="type text that you want to share."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/click"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
         android:id="@+id/change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/teal_200"
-        android:text="Data Transfer"
+        android:text="Explicit Intent"
+        app:layout_constraintEnd_toStartOf="@id/share"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sendtext"/>
+
+    <Button
+        android:id="@+id/share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        android:text="Implicit Intent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/click"/>
+        app:layout_constraintStart_toEndOf="@id/change"
+        app:layout_constraintTop_toBottomOf="@id/sendtext"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

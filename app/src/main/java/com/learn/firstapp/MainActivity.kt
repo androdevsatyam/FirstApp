@@ -12,6 +12,7 @@ import android.widget.Toast
 // by using : we inherit a class in kotlin
 class MainActivity : AppCompatActivity() {
 
+    lateinit var share:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         //todo this is how we get reference of views that exist on xml layout file
         val btn = findViewById<Button>(R.id.click);
         val  textView =findViewById<TextView>(R.id.textview);
+        share=findViewById(R.id.share)
 
         //todo this is Click Listener old_style
          btn.setOnClickListener(View.OnClickListener {
@@ -39,10 +41,23 @@ class MainActivity : AppCompatActivity() {
 
         /*----------- Second Chapter Coding -----------*/
         val change=findViewById<Button>(R.id.change)
+        val et=findViewById<EditText>(R.id.sendtext)
 
         change.setOnClickListener{
+            //Explicit Intent
             val transferInte=Intent(this,SecondActivity::class.java)
+            transferInte.putExtra("data",et.text.toString())
             startActivity(transferInte)
+        }
+
+        share.setOnClickListener() {
+            //IMPLICIT Intent
+            val intent=Intent()
+            intent.setAction(Intent.ACTION_SEND)
+            intent.putExtra(Intent.EXTRA_TEXT,et.text.toString())
+            intent.type="text/plain"
+            startActivity(Intent.createChooser(intent,"Choose App"))
+//            startActivity(intent)
         }
 
     }
@@ -53,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             this, "Function Calling", Toast
                 .LENGTH_SHORT
         ).show()
-        textView.text="Yes Long Clicked!!";
+        textView.text="Yes Long Clicked!!"
     }
 
 }
